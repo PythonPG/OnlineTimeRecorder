@@ -1,0 +1,7 @@
+box: python
+
+build:
+  steps:
+    - script:
+      code: |-
+        echo "Start Deploy"
