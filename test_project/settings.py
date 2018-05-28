@@ -25,7 +25,8 @@ SECRET_KEY = '%d5-&mw#_!o9n83s0_jjg1t&g6de5f4v&a8)-*kb5q6uk=2oar'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['ec2-18-188-66-229.us-east-2.compute.amazonaws.com']
+#ALLOWED_HOSTS = ['ec2-18-188-66-229.us-east-2.compute.amazonaws.com']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -118,4 +119,4 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = '/tc/static/'

@@ -20,13 +20,13 @@ from django.conf.urls.static import static
 from django.conf import settings
 
 urlpatterns = [
-  url(r'^form_user_save', views.form_user_save),
-  url(r'^form_top', views.form_top),
-  url(r'form_user_login/form_user_login.html', views.form_user_login_function),
+  url(r'^form_user_save/$', views.form_user_save),
+    url(r'^form_top/$', views.form_top, name='top'),
+    url(r'^form_user_login/$', views.form_user_login_function, name='user_login'),
   # views_form_user_loginというモジュールはありません
-  url(r'form_time_login/form_time_login.html', views.form_time_login_function),
-  url(r'^form_user', views.form_user),
-  url(r'^form_time', views.form_time),
-  url(r'^add_syain', views.form_save),
-  url(r'^search', views.search),
+    url(r'^form_time_login/$', views.form_time_login_function, name='time_login'),
+    url(r'^form_user/$', views.form_user, name='form_user'),
+    url(r'^form_time/$', views.form_time, name='form_time'),
+  url(r'^add_syain/$', views.form_save),
+  url(r'^search/$', views.search),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

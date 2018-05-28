@@ -58,13 +58,13 @@
         <header>
             <ul id="head-menu">
             	<ul id="head-menu-1">
-                	<li><a href="https://hellodjango-nicoishizuka.c9users.io:8080/form_user_login/form_user_login.html">ユーザー管理・ログイン</a></li>
+                	<li><a href="{% url 'user_login' %}">ユーザー管理・ログイン</a></li>
                 </ul>
                 <ul id="head-menu-2">
-                	<li><a href="https://hellodjango-nicoishizuka.c9users.io:8080/form_time_login/form_time_login.html">タイムレコーダー・ログイン</a></li>
+                	<li><a href="{% url 'time_login' %}">タイムレコーダー・ログイン</a></li>
                 </ul>
                 <ul id="head-menu-3">
-                	<li><a href="http://python.systems/">TOP画面に戻る</a></li>
+                	<li><a href="{% url 'top' %}">TOP画面に戻る</a></li>
                 </ul>        
             </ul>
         </header>
@@ -137,7 +137,7 @@
             		<!--  <td><input type="text" name="status" autocomplete="time"></td> -->
                		</tr>
                		<form>
-                            <td><input type="button" onClick="location.href='https://hellodjango-nicoishizuka.c9users.io:8080/form_user_login/form_user_login.html'" value="登録"></td>
+                            <td><input type="button" onClick="location.href='{% url 'user_login' %}'" value="登録"></td>
                         </form>
                 </ul>	
             </table>
