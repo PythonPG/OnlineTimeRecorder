@@ -14,9 +14,11 @@
             	<ul id="head-menu-1">
                 	<li><a href="{% url 'user_login' %}">ユーザー管理ログイン</a></li>
                 </ul>
+                {% comment %}
                 <ul id="head-menu-2">
                 	<li><a href="{% url 'time_login' %}">タイムレコーダーログイン</a></li>
                 </ul>
+                {% endcomment %}
                 <ul id="head-menu-3">
                 	<li><a href="{% url 'top' %}">TOP画面に戻る</a></li>
                 </ul>        
@@ -26,6 +28,8 @@
         <side>
         </side>
         <footer>
+            {{ form.errors }}
+            <form method="post">{% csrf_token %}
             <table>
             	<ul id="main-menu">
             		<ul id="main-menu-1">
@@ -33,12 +37,18 @@
                 	</ul>
                 	<tr>
                 		<ul id="main-s1">
-            				<td>■電話番号（01201234567）</td>
+            				<td>
+            				    <p>■電話番号</p>
+            				    <p>マスター（012345678）</p>
+            				    <p>一般ユーザー（08012345678）</p>
+            				</td>
             			</ul>
             		    <ul id="main-s2">
-            		        <td><input type="text" id="tlephone" value="01201234567"></td>
+            		        {# <td><input type="text" id="tlephone" value="01201234567" name="username"></td> #}
+            		        <td>{{ form.username }}</td>
             		    </ul>
             		</tr>
+            		{% comment %}
                		<tr>
             		    <ul id="main-s1">
             		    	<td>■日付{{ current_date }}</td> 
@@ -47,20 +57,21 @@
                				<td><input type="text" id="date" value="{{ current_date }}"></td> 
                			</ul>
                		</tr>
+               		{% endcomment %}
                		<tr>
             		    <ul id="main-s1">
-            		    	<td>■パスワード（１２３４）</td> 
+            		    	<td>■パスワード（ishizuka）</td> 
             			</ul>
             			<ul id="main-s2">
-               				<td><input type="text" id="password" value="1234"></td> 
+               				{# <td><input type="text" id="password" value="1234" name="password"></td> #}
+               				<td>{{ form.password }}</td>
                			</ul>
-               			<form>
-                            <td><input type="button" onClick="location.href='{% url 'form_user' %}'" value="ログイン"></td>
-                        </form>
+                            <td><input type="submit" value="ログイン"></td>
                		</tr>
                		
                 </ul>	
             </table>
+            </form>
         </footer>
     </body>
 </html>
