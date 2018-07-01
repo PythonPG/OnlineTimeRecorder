@@ -4,8 +4,8 @@ from django.shortcuts import render, redirect
 from django.urls import reverse
 from django.views.generic import FormView
 import django
-from .forms import MyForm, LoginForm, UserForm
-from .models import User
+from .forms import MyForm, LoginForm, UserForm, DemoUserForm
+from .models import User, DemoUser
 
 def form_top(request):
    return render(request, 'form_top/form_top.html', {
@@ -25,7 +25,9 @@ class FormUserLogin(FormView):
       return super().form_valid(form)
 
    def get_success_url(self):
-      if self.request.user.master:
+      if self.request.user.secret:
+         return reverse('form_secret')
+      elif self.request.user.master:
          return reverse('form_user')
       else:
          return reverse('form_time')
@@ -57,6 +59,30 @@ def del_user(request):
       User.objects.get(pk=id).delete()
    return JsonResponse({})
 
+class FormSecret(FormView):
+   """
+   シークレット
+   """
+   template_name = 'form_secret/form_secret.html'
+   form_class = DemoUserForm
+   success_url = '.'
+
+   def form_valid(self, form):
+      DemoUser.objects.create(**form.cleaned_data)
+      return super().form_valid(form)
+
+   def get_context_data(self, **kwargs):
+      context = super().get_context_data(**kwargs)
+      context['user_list'] = DemoUser.objects.all().order_by('id')
+      return context
+   
+
+def del_demo_user(request):
+   id = request.GET.get('id')
+   if id:
+      DemoUser.objects.get(pk=id).delete()
+   return JsonResponse({})
+   
 import datetime 
 def form_time_login_function(request):
    return render(request, 'form_time_login/form_time_login.html', {

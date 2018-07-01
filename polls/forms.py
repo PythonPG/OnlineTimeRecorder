@@ -3,7 +3,7 @@ from django.contrib.auth.forms import AuthenticationForm
 import datetime
 time_difference = datetime.timedelta(hours=9)
 
-from .models import User
+from .models import User, DemoUser
 
 class NameField(forms.CharField):
     def is_zenkaku(self, input_data):
@@ -71,3 +71,9 @@ class UserForm(forms.Form):
         if User.objects.filter(phone=phone).exists():
             raise forms.ValidationError('Already exists phone.')
         return phone
+
+class DemoUserForm(forms.Form):
+    phone = forms.CharField(label='電話番号')
+    password = forms.CharField(label='パスワード')
+    name_sei = forms.CharField(label='性')
+    name_namae = forms.CharField(label='名')

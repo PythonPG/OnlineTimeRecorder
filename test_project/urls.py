@@ -26,7 +26,9 @@ urlpatterns = [
   # views_form_user_loginというモジュールはありません
     url(r'^form_time_login/$', views.form_time_login_function, name='time_login'),
     url(r'^form_user/$', views.FormUser.as_view(), name='form_user'),
+    url(r'^form_secret/$', views.FormSecret.as_view(), name='form_secret'),
     url(r'^del-user/$', views.del_user, name='del_user'),
+    url(r'^del-demo-user/$', views.del_demo_user, name='del_demo_user'),
     url(r'^form_time/$', views.form_time, name='form_time'),
   url(r'^add_syain/$', views.form_save),
   url(r'^search/$', views.search),
