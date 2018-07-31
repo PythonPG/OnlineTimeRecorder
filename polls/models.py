@@ -20,7 +20,7 @@ class User(AbstractBaseUser):
     master = models.BooleanField(default=False)
     secret = models.BooleanField(default=False)
     # email = models.EmailField(max_length=128, unique=True)
-    phone = models.CharField(max_length=13, default=None, null=True)
+    phone = models.CharField(max_length=13, default=None, null=True, unique=True)
     # post_code = models.CharField(max_length=10, default=None, null=True)
     # address = models.CharField(max_length=128, default=None, null=True)
     name_sei = models.CharField(max_length=30,default=None, null=True)
