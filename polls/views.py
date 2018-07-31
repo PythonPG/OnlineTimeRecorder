@@ -86,20 +86,14 @@ def del_demo_user(request):
 import datetime 
 def form_time_login_function(request):
    return render(request, 'form_time_login/form_time_login.html', {
-       'current_date': (datetime.datetime.today() +  datetime.timedelta(hours=9)).strftime('%Y年%m月%d日')
+       'current_date': datetime.datetime.today().strftime('%Y年%m月%d日')
    })
 
 import datetime
-def form_user(request):
-   return render(request, 'form_user/form_user.html', {
-       'current_date': (datetime.datetime.today() +  datetime.timedelta(hours=9)).strftime('%Y年%m月%d日')
-   })
-   
-import datetime
 def form_time(request):
    return render(request, 'form_time/form_time.html', {
-      'current_date': (datetime.datetime.today() +  datetime.timedelta(hours=9)).strftime('%Y年%m月%d日'),
-      'current_time': (datetime.datetime.today() +  datetime.timedelta(hours=9)).strftime('%H:%M')
+      'current_date': datetime.datetime.today().strftime('%Y年%m月%d日'),
+      'current_time': datetime.datetime.today().strftime('%H:%M')
    })
 
 def form_user_save(request):

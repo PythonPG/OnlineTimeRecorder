@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>Welcome! Neovision Consulting</title>
+        <link rel="stylesheet" href="{% static "css/reset.css" %}">
+        <link rel="stylesheet" href="{% static "css/nvc.css" %}">
+    </head>
+    <body>
+        <div id="container">
+            <header>
+                <ul id="head-menu">
+                    <ul id="head-menu-1">
+                        <li><a href="{% url 'user_login' %}">ユーザー管理・ログイン</a></li>
+                    </ul>
+                    {% comment %}
+                    <ul id="head-menu-2">
+                    	<li><a href="{% url 'time_login' %}">タイムレコーダー・ログイン</a></li>
+                    </ul>
+                    {% endcomment %}
+                    <ul id="head-menu-3">
+                    	<li><a href="{% url 'top' %}">TOP画面に戻る</a></li>
+                    </ul>        
+                </ul>
+            </header>
+            {% block content %}{% endblock %}
+        </div>
+    </body>
+</html>
